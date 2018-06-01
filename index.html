@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>排序</title>
+  </head>
+  <style type="text/css">
+    h1{ text-align: center }
+    #app {
+      text-align: center;
+    }
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    li {
+      padding: 10px 0;
+      margin-bottom: 10px;
+    }
+  </style>
+  <body>
+    <div id="app">
+      <h1>排序算法</h1>
+      <ul>
+        <li><a href="./Bubble.html">冒泡排序</a></li>
+        <li><a href="./Selection.html">选择排序</a></li>
+        <li><a href="./insert.html">插入排序</a></li>
+        <li><a href="./heap.html">堆排序</a></li>
+        <li><a href="./Merge.html">归并排序</a></li>
+        <li><a href="./quick.html">快速排序</a></li>
+        <li><a href="./shell.html">希尔排序</a></li>
+      </ul>      
+    </div>
+  </body>
+  <script>
+    const list = [6, 5, 3, 1, 8, 7, 2, 4];
+
+    function insertSort(list) {
+      const len = list.length;
+      const reList = [list[0]];
+
+      for (let i=1; i<len; i++) {
+        const theOne = list[i];
+        const lastIndex = reList.length -1
+        if (theOne >= reList[lastIndex]) {
+          reList.push(theOne)
+        } else if (theOne <= reList[0]) {
+          reList.unshift(theOne)
+        } else {
+          for (let j=0; j < lastIndex; j++) {
+            if (theOne <= reList[j+1] && theOne >= reList[j]) {
+              reList.splice(j+1, 0, theOne);
+              break;
+            }
+          }
+        }
+      }
+      return reList;
+    }
+    
+    console.log(insertSort(list))
+  </script>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>S-归并</title>
+  </head>
+  <style type="text/css">
+    h1{ text-align: center }
+    #app{
+      text-align: center
+    }
+    a {
+      padding: 10px;
+      display: block;
+    }
+  </style>
+  <body>
+    <div id="app">
+      <h1>归并排序</h1>
+      <img src="img/merge1.gif">
+      <a  target="_blank" href="https://www.cnblogs.com/chengxiao/p/6194356.html">图解归并排序</a>
+    </div>
+  </body>
+  <script>
+    const list = [6, 5, 1, 3, 8, 7, 2, 4];
+
+    function mergeSort(list) {
+      const vess = new Array(list.length);
+      cycleSort(list, 0, list.length-1, vess)
+      return list;
+    }
+
+    function cycleSort(list, start, end, vess) {
+      if(start < end) {
+        const middle = parseInt((start + end) / 2);
+        cycleSort(list, start, middle, vess);
+        cycleSort(list, middle+1, end, vess);
+        merge(list, start, middle, end, vess)
+      }
+    }
+
+    function merge(list, start, middle, end, vess) {
+      let t = 0;
+      let i = start;
+      let j = middle + 1;
+      while (i <= middle && j <= end) {
+        if (list[i] < list[j]) {
+          vess[t++] = list[i++]
+        } else {
+          vess[t++] = list[j++]
+        }
+      }
+      while (i <= middle) {
+        vess[t++] = list[i++]
+      }
+      while (j <= end) {
+        vess[t++] = list[j++]
+      }
+      t = 0;
+      while(start <= end) {
+        list[start++] = vess[t++]
+      }
+    }
+
+    console.log(mergeSort(list))
+  </script>
+</html>

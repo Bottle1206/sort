@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>S-希尔</title>
+  </head>
+  <style type="text/css">
+    h1{ text-align: center }
+    #app{
+      text-align: center
+    }
+  </style>
+  <body>
+    <div id="app">
+      <h1>希尔排序</h1>
+    </div>
+  </body>
+  <script>
+    const list = [6, 5, 3, 1, 8, 7, 2, 4];
+
+    function shellSort(list) {
+      const len = list.length
+      let gap = Math.floor(list.length / 2);
+      while(gap > 0) {
+        console.log('--------------gap:' + gap)
+        for (let i = gap; i < len; i++) {
+          console.info("j:" + (i-gap))
+          for (let j = i - gap; j >= 0 && list[j] > list[gap + j]; j -= gap) {
+            const temp = list[j];
+            list[j] = list[gap + j];
+            list[gap + j] = temp;
+            console.log('**switch**J:' + j)
+          }
+          console.log(list)
+          console.log("-----END-----")
+        }
+        console.log(' ')
+        gap = Math.floor(gap / 2)
+      }
+      return list;
+    }
+    
+    console.log(shellSort(list))
+  </script>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>S-冒泡</title>
+  </head>
+  <style type="text/css">
+    h1{ text-align: center }
+    #app{
+      text-align: center
+    }
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    li {
+      width: 35px;
+      display: inline-block;
+      font-size: 19px;
+      font-weight: 500;
+      color: #999;
+    }
+    p {
+      line-height: 1.8;
+      color: #3f51b5;
+    }
+  </style>
+  <body>
+    <div id="app">
+      <h1>冒泡</h1>
+      <ul><li>6</li><li>5</li><li>3</li><li>1</li><li>8</li><li>7</li><li>2</li><li>4</li></ul> 
+      <img src="img/bubble.gif"><br>
+      <img src="img/Bubble2.gif">
+      <p>
+        相邻的两个值作比较，大的移到前面<br>
+        一轮排下来，最大的在最左边<br>
+        (length - 1) 轮后排完
+      </p>
+    </div>
+  </body>
+  <script>
+    const list = [6, 5, 3, 1, 8, 7, 2, 4];
+
+    for(let j = list.length; j > 1; j--) {
+      for(let i = 1; i < j; i++) {
+        const before = list[i - 1];
+        if (before > list[i]) {
+          list[i - 1] = list[i];
+          list[i] = before;
+        }
+      }
+    }
+
+    console.log(list)
+  </script>
+</html>

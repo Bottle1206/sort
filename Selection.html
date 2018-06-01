@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>S-选择</title>
+  </head>
+  <style type="text/css">
+    h1{ text-align: center }
+    #app{
+      text-align: center
+    }
+    p {
+      line-height: 1.8
+    }
+  </style>
+  <body>
+    <div id="app">
+      <h1>选择</h1>
+      <img src="img/select0.png" style="height: 372px">
+      <img src="img/Selection.gif">
+      <img src="img/select2.gif" style="margin-left: 20px">
+      <p>
+        以第一个值为基数，以此与后面的数比较<br>
+        遇到比其小的，将它设为新的基数，并记录索引<br>
+        一轮下来 获得最小的数，通过索引将其与初始基数交换位置<br>
+        由此最右边的为最小的数，第二轮从index=1开始<br>
+        (length - 1) 轮后排完
+      </p>
+    </div>
+  </body>
+  <script>
+    const list = [8,5,2,6,9,3,1,4,0,7];
+    const len = list.length;
+
+    for (let j = 0; j < len - 1; j++) {
+      let min = j;
+      for (let i = j + 1; i < len; i++) {
+        if (list[i] < list[min]) {
+          min = i
+        }
+      }
+      if (min !== j) {
+        const minValue = list[min];
+        list[min] = list[j];
+        list[j] = minValue;
+      }
+    }
+
+    console.log(list)
+  </script>
+</html>

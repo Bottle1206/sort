@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>S-快速</title>
+  </head>
+  <style type="text/css">
+    h1{ text-align: center }
+    #app{
+      text-align: center
+    }
+    p{
+      line-height: 1.8
+    }
+    i{
+      color: #F00;
+    }
+  </style>
+  <body>
+    <div id="app">
+      <h1>快速排序</h1>
+      <img src="img/quick.gif">
+      <p>
+        快速排序算法的思想类似于二分法，每次都是在数组中选择一个<i>基数</i><br>（可以是任意一个位置的数，不过一般选择中间的数字或者最左边的数字），<br>
+        <i>每一轮结束后，比该基数小的数都位于该基数的左边，比该基数大的数都位于该基数的右边。</i><br>然后再分别对基数左边和右边的数组进行相同的操作，直到数组中只有一个元素时，返回该数组。
+      </p>
+    </div>
+  </body>
+  <script>
+    const list = [6, 5, 3, 1, 8, 7, 2, 4];
+
+    function quickSort(list) {
+      const len = list.length;
+      if (len <= 1) return list;
+      // 选择第一个作为基准
+      const base = list[0];
+      const left = [], right = [];
+      for (let i=1; i<len; i++) {
+        if (list[i] < base) {
+          left.push(list[i])
+        } else {
+          right.push(list[i])
+        }
+      }
+      
+      return quickSort(left).concat([base, ...quickSort(right)])
+    }
+    
+    console.log(quickSort(list));
+
+  </script>
+</html>
